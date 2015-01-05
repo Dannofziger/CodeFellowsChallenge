@@ -53,7 +53,6 @@ Users.controller("MainCtrl", ["$scope", function ($scope) {
             };
             var oldUser = $scope.newUser;
             angular.forEach(oldUser, function(user){
-                alert(user.userNum +" "+ $scope.updatedData.userNum);
                 if(user.userNum === $scope.updatedData.userNum){
                     $scope.newUser[$scope.updatedData.userNum-1] = $scope.updatedData;
                 }
