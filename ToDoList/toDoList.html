@@ -1,0 +1,57 @@
+<!--Daniel Nofziger 12/31/2014-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To Do List</title>
+    </head>
+    <body>
+        <h1>Interactive To-Do List</h1>
+        <!--Adding the textbox-->
+        <div style="padding:8px;">
+            To Do: <input type="text" value=""></input>
+        </div>
+        <!--Adding the button-->
+        <div style="padding:8px;">
+            <button id="get">Add to List</button>
+        </div>
+        <div id="toDoList">
+            <!--Here's where the new tasks go-->
+        </div>
+        <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+        //Here begins the jQuery.
+            //Starting the counter.
+            var counter = 1;
+            
+            //Add button functionality.
+            $("#get").click(function(){
+                //To prevent bloat, I only allowed 25 tasks at a time.
+                if(counter>25){
+                    alert("Only 25 things are allowed on this list. Please complete a few before taking on more tasks.");
+                    //This is easier than adding 'else' satements after this 'if'
+                    return false;
+                }
+                
+                //Procedurally create structure for item.
+                var newTaskDiv=$(document.createElement("li"))
+                    .attr("id", "taskLi"+counter);
+                //Now add input from textbox.
+                newTaskDiv.after().html(
+                    $("input:text").val());
+                //Finally, actually add it to the HTML.
+                newTaskDiv.appendTo("#toDoList");
+                //Add to counter.
+                counter ++;
+            });
+            //Remove from list on click.
+            $("#toDoList").on("click","li", function(){
+                //Stylized deletion [first slide up, then remove].
+                $(this).slideUp(400, function(){
+                    (this).remove();
+                });
+                //Subtract from counter
+                counter --;
+            });
+        </script>
+    </body>
+</html>

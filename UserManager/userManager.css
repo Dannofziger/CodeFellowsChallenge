@@ -1,0 +1,23 @@
+#createSection {
+    border-style:groove;
+    width:300px;
+    float:left;
+    padding:10px;
+}
+
+#createLabel {
+    text-align:center;
+    font-weight:bold;
+    font-size:120%;
+}
+
+#editSection {
+    border-style:groove;
+    width:300px;
+    float:left;
+    padding:10px;
+}
+
+#userList {
+    clear:both;
+}
