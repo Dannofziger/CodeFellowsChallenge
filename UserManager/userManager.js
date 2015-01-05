@@ -52,7 +52,12 @@ Users.controller("MainCtrl", ["$scope", function ($scope) {
                 userNum:$scope.UuserNum
             };
             var oldUser = $scope.newUser;
-            oldUser[$scope.updatedData.userNum-1] = $scope.updatedData;
+            angular.forEach(oldUser, function(user){
+                alert(user.userNum +" "+ $scope.updatedData.userNum);
+                if(user.userNum === $scope.updatedData.userNum){
+                    $scope.newUser[$scope.updatedData.userNum-1] = $scope.updatedData;
+                }
+            });
             $scope.showForm = true;
         }else{
             alert("Please enter a first name and a valid email address.");
